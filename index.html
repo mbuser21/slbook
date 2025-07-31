@@ -45,8 +45,6 @@
           const [selectedDoctor, setSelectedDoctor] = React.useState('');
           const [selectedSerial, setSelectedSerial] = React.useState(null); // Stores the selected serial number
           const [attendTime, setAttendTime] = React.useState('');
-
-          // State variable for generated output visibility and content
           const [generatedOutput, setGeneratedOutput] = React.useState(null);
 
           // Doctors data structure, separated by institute
@@ -65,27 +63,39 @@
               { name: ' 👨‍⚕️ ইফতেখারুল আলম', id: 'iftekharul_alam' },
               { name: ' 👩‍⚕️ রিদিতা রায় তুলি', id: 'ridita_roy_tuli' },
               { name: ' 👨‍⚕️ রাজীব দাস', id: 'rajeeb_das' },
-                 { name: ' 👨‍⚕️ কাওছার আহমদ', id: 'kawsar' },
+              { name: ' 👨‍⚕️ কাওছার আহমদ', id: 'kawsar' },
             ],
-            MC: [ // Changed 'Mother Care' to 'MC'
+            MC: [
               { name: ' 👩‍⚕️ সাদিয়া খান', id: 'sadia_khan' },
               { name: ' 👨‍⚕️ অরূপ রাউৎ', id: 'arup_raut' },
               { name: ' 👨‍⚕️ সোহান মাহমুদ', id: 'sohan_mahmud' },
               { name: ' 👨‍⚕️ মনোরঞ্জন সরকার', id: 'monoranjon_sarkar' },
-                { name: ' 👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok' },
+              { name: ' 👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok' },
             ],
+            // New tab for Uttora, with cloned data from MC
+            Uttora: [
+                { name: ' 👩‍⚕️ সাদিয়া খান', id: 'sadia_khan_uttora' },
+                { name: ' 👨‍⚕️ অরূপ রাউৎ', id: 'arup_raut_uttora' },
+                { name: ' 👨‍⚕️ সোহান মাহমুদ', id: 'sohan_mahmud_uttora' },
+                { name: ' 👨‍⚕️ মনোরঞ্জন সরকার', id: 'monoranjon_sarkar_uttora' },
+                { name: ' 👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok_uttora' },
+            ]
           };
 
           // Reception numbers for each institute
           const receptionNumbers = {
             Modern: '01741855980',
-            MC: '01313-735555', // Changed 'Mother Care' to 'MC'
+            MC: '01313-735555',
+            // New reception number for Uttora
+            Uttora: '01xxxxxxxxxx', // Placeholder number
           };
 
           // Image URLs for each institute (using placeholder images)
           const instituteImages = {
             Modern: 'md.png',
             MC: 'mc.png',
+            // New placeholder image for Uttora
+            Uttora: 'https://placehold.co/300x150/ffc0cb/000000?text=Uttora+Hospital',
           };
 
           // Effect to reset selectedDoctor when the institute changes
@@ -100,7 +110,8 @@
           const handleGenerateAppointment = () => {
             // Validate required fields before generating output
             if (!patientName || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
-              alert('Please fill in all required fields.');
+              // Replaced alert with a simple message box to adhere to best practices
+              setGeneratedOutput({ error: 'Please fill in all required fields.' });
               return;
             }
 
@@ -116,7 +127,6 @@
 
             // Collect all form data in the new specified format
             const outputData = {
-              // Add asterisks around the patient's name
               name: `${patientName}`,
               doctor: doctorName,
               serial: processedSerial, // Use processedSerial for output
@@ -130,9 +140,9 @@
 
           // Function to handle "Copy Output" button click
           const handleCopyOutput = () => {
-            if (generatedOutput) {
+            if (generatedOutput && !generatedOutput.error) {
               // Construct the text to copy in the new format
-              const textToCopy = `Name: ${generatedOutput.name}\n\n` + // Name already includes asterisks
+              const textToCopy = `Name: ${generatedOutput.name}\n\n` +
                                  `${generatedOutput.doctor}\n\n` +
                                  `SL No: ${generatedOutput.serial}\n` +
                                  `🕝: ${generatedOutput.attendTime} (Aprx)\n` +
@@ -141,18 +151,18 @@
               // Use document.execCommand('copy') for better iframe compatibility
               const textarea = document.createElement('textarea');
               textarea.value = textToCopy;
-              textarea.style.position = 'fixed'; // Prevent scrolling to bottom
-              textarea.style.opacity = '0'; // Hide the textarea
+              textarea.style.position = 'fixed';
+              textarea.style.opacity = '0';
               document.body.appendChild(textarea);
               textarea.focus();
               textarea.select();
               try {
                 const successful = document.execCommand('copy');
                 const msg = successful ? 'Copied to clipboard!' : 'Failed to copy!';
-                alert(msg);
+                setGeneratedOutput({ ...generatedOutput, message: msg });
               } catch (err) {
                 console.error('Failed to copy text: ', err);
-                alert('Failed to copy to clipboard.');
+                setGeneratedOutput({ ...generatedOutput, message: 'Failed to copy to clipboard.' });
               }
               document.body.removeChild(textarea);
             }
@@ -204,6 +214,18 @@
                     className="hidden"
                   />
                   <span className="mr-2">🏥</span>MC
+                </label>
+                {/* New label for Uttora */}
+                <label className={`flex-1 text-center py-2 rounded-xl cursor-pointer transition-all duration-300 ${institute === 'Uttora' ? 'bg-white bg-opacity-40 text-gray-800 shadow' : 'text-gray-700 hover:bg-opacity-30'}`}>
+                  <input
+                    type="radio"
+                    name="institute"
+                    value="Uttora"
+                    checked={institute === 'Uttora'}
+                    onChange={() => setInstitute('Uttora')}
+                    className="hidden"
+                  />
+                  <span className="mr-2">🏥</span>Uttora
                 </label>
               </div>
 
@@ -279,7 +301,7 @@
                         key={serial}
                         onClick={() => setSelectedSerial(serial)}
                         className={`p-2 rounded-lg font-semibold transition-all duration-200
-                                    ${selectedSerial === serial ? 'bg-white bg-opacity-50 shadow-md text-gray-800' : 'bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-800'}`}
+                                     ${selectedSerial === serial ? 'bg-white bg-opacity-50 shadow-md text-gray-800' : 'bg-white bg-opacity-20 hover:bg-opacity-30 text-gray-800'}`}
                       >
                         {serial}
                       </button>
@@ -308,34 +330,42 @@
               {generatedOutput && (
                 <div className="mt-8 bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl shadow-xl p-6 border border-white border-opacity-20">
                   <h2 className="text-xl font-bold text-gray-800 mb-4">Generated Output</h2>
-                  <div className="bg-white bg-opacity-20 rounded-xl p-4 text-gray-800 text-sm leading-relaxed">
-                    <p>Name: <em>{generatedOutput.name}</em></p>
-                    <p className="mt-4">{generatedOutput.doctor}</p>
-                    <p className="mt-4">SL No: {generatedOutput.serial}</p>
-                    <p>🕝: {generatedOutput.attendTime} (Aprx)</p>
-                    <p>📱: {generatedOutput.phone}</p>
-                  </div>
-                  <button
-                    onClick={handleCopyOutput}
-                    className="mt-4 w-full py-3 bg-white bg-opacity-40 text-gray-800 font-bold rounded-2xl shadow-lg hover:bg-opacity-50 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-copy mr-2"
-                    >
-                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-                    </svg>
-                    Copy Output
-                  </button>
+                  {generatedOutput.error ? (
+                    <div className="bg-red-200 text-red-800 p-4 rounded-xl">
+                      {generatedOutput.error}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="bg-white bg-opacity-20 rounded-xl p-4 text-gray-800 text-sm leading-relaxed">
+                        <p>Name: <em>{generatedOutput.name}</em></p>
+                        <p className="mt-4">{generatedOutput.doctor}</p>
+                        <p className="mt-4">SL No: {generatedOutput.serial}</p>
+                        <p>🕝: {generatedOutput.attendTime} (Aprx)</p>
+                        <p>📱: {generatedOutput.phone}</p>
+                      </div>
+                      <button
+                        onClick={handleCopyOutput}
+                        className="mt-4 w-full py-3 bg-white bg-opacity-40 text-gray-800 font-bold rounded-2xl shadow-lg hover:bg-opacity-50 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="lucide lucide-copy mr-2"
+                        >
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        </svg>
+                        Copy Output
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>
