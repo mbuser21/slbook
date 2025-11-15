@@ -114,7 +114,7 @@
 
           // NOTE: do not set Content-Type header manually; fetch will set it automatically.
           // Sending as application/x-www-form-urlencoded avoids preflight in most cases.
-          const res = await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+          const res = await fetch("https://script.google.com/macros/s/AKfycbz64bARIKQmuS55isTeVTHKVkRLsIAv5ADyt5LQ0Sr4qug1zockEXjjo8_bMeoyFls/exec", {
             method: "POST",
             body: formBody
           });
