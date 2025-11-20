@@ -112,6 +112,8 @@
           // build form body (application/x-www-form-urlencoded)
           const formBody = new URLSearchParams();
           formBody.append('phone', phoneNumber);
+            const doctorName = instituteDoctors[institute].find(doc => doc.id === selectedDoctor)?.name || "";
+formBody.append("doctor", doctorName);
 
           // NOTE: do not set Content-Type header manually; fetch will set it automatically.
           // Sending as application/x-www-form-urlencoded avoids preflight in most cases.
