@@ -115,7 +115,8 @@ try {
   const formBody = new URLSearchParams();
   formBody.append("phone", phoneNumber);
   formBody.append("doctor", doctorName);
-
+  formBody.append("institute", institute);
+    
   await fetch("https://script.google.com/macros/s/AKfycbzkMMjq8HdDZBQBdh9o0g0RbSSZdWa_qdY1nAWZiDOp8eO9V684ZT9k365MI4sXZ8c5/exec", {
     method: "POST",
     mode: "no-cors",
