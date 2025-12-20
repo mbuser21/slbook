@@ -87,7 +87,7 @@
       const serialNumbers = [3,4,5,6,7,8,'15 H','16 H','25 P','26 P'];
 
       const handleGenerateAppointment = async () => {
-        if (!patientName || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
+        if (!patientName || !patientAge || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
           setGeneratedOutput({ error: 'Please fill in all required fields.' });
           return;
         }
@@ -115,6 +115,7 @@ try {
 
   const formBody = new URLSearchParams();
   formBody.append("phone", phoneNumber);
+  formBody.append("age", patientAge);
   formBody.append("doctor", doctorName);
   formBody.append("institute", institute);
     
