@@ -22,6 +22,7 @@
     const App = () => {
       const [institute, setInstitute] = React.useState('Modern');
       const [patientName, setPatientName] = React.useState('');
+      const [patientAge, setPatientAge] = React.useState('');
       const [phoneNumber, setPhoneNumber] = React.useState('');
       const [selectedDoctor, setSelectedDoctor] = React.useState('');
       const [selectedSerial, setSelectedSerial] = React.useState(null);
@@ -46,7 +47,7 @@
           { name: ' 👨‍⚕️ রাজীব দাস', id: 'rajeeb_das' },
           { name: ' 👨‍⚕️ কাওছার আহমদ', id: 'kawsar' },
           { name: ' 👨‍⚕️ সালেহ আহমদ তাহলিল', id: 'tohlil' },
-          { name: ' 👩‍⚕️ তাসফিয়া আহমেদ শর্মি', id: 'sormi' },
+          { name: ' 👩‍⚕️ তাসফিয়া আহমেদ শর্মি', id: 'sormi' },
         ],
         MC: [
           { name: ' 👩‍⚕️ সাদিয়া খান', id: 'sadia_khan' },
@@ -60,10 +61,10 @@
           { name: ' 👨‍⚕️ মোঃ আরিফুজ্জামান (পলাশ)', id: 'arifpolash' },
           { name: ' 👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ', id: 'mmasud' },
           { name: ' 👨‍⚕️ সাহেদ আহমেদ সুমন', id: 'sam' },
-          { name: ' 👨‍⚕️ এম. মাহবুবুল আলম ভূঁইয়া', id: 'mvuiya' },
+          { name: ' 👨‍⚕️ এম. মাহবুবুল আলম ভূঁইয়া', id: 'mvuiya' },
           { name: ' 👨‍⚕️ সব্যসাচী পাল তমাল', id: 'stomal' },
           { name: ' 👩‍⚕️ রাসমিনা আক্তার পলি', id: 'rpoli' },
-          { name: ' 👨‍⚕️ মোহাম্মদ হুমায়ুন কবীর', id: 'humayun' },
+          { name: ' 👨‍⚕️ মোহাম্মদ হুমায়ুন কবীর', id: 'humayun' },
           { name: ' 👨‍⚕️ অমৃত লাল দাস', id: 'omrito' },
           { name: ' 👨‍⚕️ সাকির আহমদ শাহীন', id: 'sakirsahin' },
         ]
@@ -182,6 +183,7 @@ try {
 
           <div className="space-y-4 mb-6">
             <input type="text" placeholder="Patient Name" value={patientName} onChange={e=>setPatientName(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
+            <input type="number" placeholder="Patient Age" value={patientAge} onChange={e=>setPatientAge(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
             <input type="tel" placeholder="Phone Number" value={phoneNumber} onChange={e=>setPhoneNumber(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
 
             <select value={selectedDoctor} onChange={e=>setSelectedDoctor(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20">
@@ -223,7 +225,7 @@ try {
 
                   <div className="mt-4 grid grid-cols-2 gap-2">
                     <button onClick={handleCopyOutput} className="py-3 bg-white bg-opacity-40 text-gray-800 font-bold rounded-2xl shadow-lg">Copy Output</button>
-                    <button onClick={() => { setPatientName(''); setPhoneNumber(''); setSelectedDoctor(''); setSelectedSerial(null); setAttendTime(''); setGeneratedOutput(null); }} className="py-3 bg-white bg-opacity-20 text-gray-800 font-bold rounded-2xl shadow-lg">Clear</button>
+                    <button onClick={() => { setPatientName(''); setPatientAge(''); setPhoneNumber(''); setSelectedDoctor(''); setSelectedSerial(null); setAttendTime(''); setGeneratedOutput(null); }} className="py-3 bg-white bg-opacity-20 text-gray-800 font-bold rounded-2xl shadow-lg">Clear</button>
                   </div>
 
                   {generatedOutput.message && <p className="mt-3 text-sm text-green-700">{generatedOutput.message}</p>}
