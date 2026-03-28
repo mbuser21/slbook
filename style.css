@@ -1,5 +1,5 @@
 /* =========================================================
-   Medical Appointment Booking — Global Styles
+   Medical — Global Styles
    ========================================================= */
 
 /* ---------- Base ---------- */
@@ -48,14 +48,39 @@ select {
   letter-spacing: -0.01em;
 }
 
-/* ---------- Institute tab bar ---------- */
+/* ---------- Tab group label ---------- */
+.tab-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #4b5563;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Tab bars ---------- */
 .tab-bar {
   display: flex;
   background: rgba(255, 255, 255, 0.20);
   border-radius: 1rem;
   padding: 0.25rem;
   gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Location bar — slightly more prominent */
+.tab-bar--location {
+  margin-bottom: 0.4rem;
+}
+
+/* Institute bar — nested / secondary feel */
+.tab-bar--institute {
   margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.tab-bar--institute label {
+  font-size: 0.8rem;
 }
 
 .tab-bar label {
