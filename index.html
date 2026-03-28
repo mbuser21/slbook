@@ -1,246 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Medical Appointment Booking</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-      body { font-family: 'Inter', sans-serif; }
-      select { appearance: none; background-image: none; }
-    </style>
-    <link rel="icon" class="favicon" href="favicon.png"
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Appointment Booking</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- App Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- React & Babel (CDN — no build step needed for GH Pages) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <link rel="icon" href="favicon.png" />
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-green-400 flex items-center justify-center min-h-screen p-4">
-  <div id="root" class="w-full max-w-md"></div>
+<body>
+  <div id="root"></div>
 
-  <script type="text/babel">
-    const App = () => {
-      const [institute, setInstitute] = React.useState('Modern');
-      const [patientName, setPatientName] = React.useState('');
-      const [patientAge, setPatientAge] = React.useState('');
-      const [phoneNumber, setPhoneNumber] = React.useState('');
-      const [selectedDoctor, setSelectedDoctor] = React.useState('');
-      const [selectedSerial, setSelectedSerial] = React.useState(null);
-      const [attendTime, setAttendTime] = React.useState('');
-      const [generatedOutput, setGeneratedOutput] = React.useState(null);
-      const [saving, setSaving] = React.useState(false);
-
-      const instituteDoctors = {
-        Modern: [
-          { name: ' 👨‍⚕️ পার্থ সারথী দাস', id: 'partha_sarathi_das' },
-          { name: ' 👨‍⚕️ পদ্ম মোহন সিনহা', id: 'padma_mohan_sinha' },
-          { name: ' 👨‍⚕️ রফিকুল ইসলাম হাজারী', id: 'rafiqul_islam_hazari' },
-          { name: ' 👨‍⚕️ মাহফুজ আহমেদ', id: 'mahfuz_ahmed' },
-          { name: ' 👩‍⚕️ পার্লী দাশ', id: 'parlee_dash' },
-          { name: ' 👩‍⚕️ মৌমিতা জামান খান', id: 'moumita_jaman_khan' },
-          { name: ' 👨‍⚕️ এখলাছ ভুঁইয়া', id: 'ekhlas_bhuiyan' },
-          { name: ' 👨‍⚕️ শাহ দিদার ইমাম', id: 'shah_didar_imam' },
-          { name: ' 👨‍⚕️ এনায়েত করিম', id: 'enayet_karim' },
-          { name: ' 👨‍⚕️ সোহেল রানা', id: 'sohel_rana' },
-          { name: ' 👨‍⚕️ ইফতেখারুল আলম', id: 'iftekharul_alam' },
-          { name: ' 👩‍⚕️ রিদিতা রায় তুলি', id: 'ridita_roy_tuli' },
-          { name: ' 👨‍⚕️ রাজীব দাস', id: 'rajeeb_das' },
-          { name: ' 👨‍⚕️ কাওছার আহমদ', id: 'kawsar' },
-          { name: ' 👨‍⚕️ সালেহ আহমদ তাহলিল', id: 'tohlil' },
-          { name: ' 👩‍⚕️ তাসফিয়া আহমেদ শর্মি', id: 'sormi' },
-        ],
-        MC: [
-          { name: ' 👩‍⚕️ সাদিয়া খান', id: 'sadia_khan' },
-          { name: ' 👨‍⚕️ অরূপ রাউৎ', id: 'arup_raut' },
-          { name: ' 👨‍⚕️ সোহান মাহমুদ', id: 'sohan_mahmud' },
-          { name: ' 👨‍⚕️ মনোরঞ্জন সরকার', id: 'monoranjon_sarkar' },
-          { name: ' 👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok' },
-          { name: '👨‍⚕️ শুভ্র তুষার সিংহ', id: 'shuvrot' }
-        ],
-        Uttora: [
-          { name: ' 👨‍⚕️ এ.কে. জিলুল হক', id: 'jillu' },
-          { name: ' 👨‍⚕️ মোঃ আরিফুজ্জামান (পলাশ)', id: 'arifpolash' },
-          { name: ' 👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ', id: 'mmasud' },
-          { name: ' 👨‍⚕️ সাহেদ আহমেদ সুমন', id: 'sam' },
-          { name: ' 👨‍⚕️ সব্যসাচী পাল তমাল', id: 'stomal' },
-          { name: ' 👨‍⚕️ মোহাম্মদ হুমায়ুন কবীর', id: 'humayun' },
-          { name: ' 👨‍⚕️ অমৃত লাল দাস', id: 'omrito' },
-          { name: ' 👨‍⚕️ সাকির আহমদ শাহীন', id: 'sakirsahin' },
-          { name: ' 👨‍⚕️ মোঃ ফয়সল আহমেদ', id: 'mdfoysol' },
-          { name: ' 👨‍⚕️ সুদীপ্ত ধর শাওন', id: 'sudiptosawn' },
-             { name: ' 👨‍⚕️ রিয়াজুল জান্নাত মাসুম', id: 'rjmasum' },
-        ]
-      };
-
-      const receptionNumbers = {
-        Modern: '01741855980',
-        MC: '01313-735555',
-        Uttora: '01300-321343'
-      };
-
-      const instituteImages = {
-        Modern: 'md.png',
-        MC: 'mc.png',
-        Uttora: 'ut.png'
-      };
-
-      React.useEffect(() => { setSelectedDoctor(''); }, [institute]);
-
-      const serialNumbers = [3,4,5,6,7,8,'15 H','16 H','25 P','26 P'];
-
-      const handleGenerateAppointment = async () => {
-        if (!patientName || !patientAge || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
-          setGeneratedOutput({ error: 'Please fill in all required fields.' });
-          return;
-        }
-
-        const doctorName = instituteDoctors[institute].find(d => d.id === selectedDoctor)?.name || 'N/A';
-        let processedSerial = selectedSerial;
-        if (typeof processedSerial === 'string') processedSerial = processedSerial.replace(/ H| P/g, '');
-
-        const outputData = {
-          name: patientName,
-          doctor: doctorName,
-          serial: processedSerial,
-          attendTime,
-          phone: phoneNumber
-        };
-
-        // ---------------------------
-        // SEND only phone (form-encoded) — avoids CORS preflight
-        // ---------------------------
-try {
-  setSaving(true);
-
-  const doctorName =
-    instituteDoctors[institute].find(doc => doc.id === selectedDoctor)?.name || "";
-
-  const formBody = new URLSearchParams();
-  formBody.append("phone", phoneNumber);
-  formBody.append("age", patientAge);
-  formBody.append("doctor", doctorName);
-  formBody.append("institute", institute);
-    
-  await fetch("https://script.google.com/macros/s/AKfycbzWs4ZUOv0Zq2dlRtvQN7T-6ZPOReybM2Ng4xk5gvht6z71XWTcvA3DwxqSV_YU9W_3/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: formBody  // EXACTLY THIS — no headers
-  });
-
-          // We try to parse JSON response; even if opaque, we don't strictly need it.
-          let json = null;
-          try { json = await res.json(); } catch (err) { json = null; }
-
-          console.log('Sheet response:', json);
-        } catch (err) {
-          console.error('Error saving phone:', err);
-        } finally {
-          setSaving(false);
-        }
-
-        setGeneratedOutput(outputData);
-      };
-
-      const handleCopyOutput = () => {
-        if (!generatedOutput || generatedOutput.error) return;
-        const textToCopy = `Name: ${generatedOutput.name}\n\n${generatedOutput.doctor}\n\nSL No: ${generatedOutput.serial}\n🕝: ${generatedOutput.attendTime} (Aprx)\n📱: ${generatedOutput.phone}`;
-        const textarea = document.createElement('textarea');
-        textarea.value = textToCopy;
-        textarea.style.position = 'fixed';
-        textarea.style.opacity = '0';
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        try {
-          document.execCommand('copy');
-          setGeneratedOutput({ ...generatedOutput, message: 'Copied to clipboard!' });
-        } catch (err) {
-          console.error('Copy failed', err);
-          setGeneratedOutput({ ...generatedOutput, message: 'Copy failed.' });
-        }
-        document.body.removeChild(textarea);
-      };
-
-      return (
-        <div className="bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl shadow-xl p-6 md:p-8 w-full max-w-md border border-white border-opacity-20">
-          <div className="flex items-center text-gray-800 mb-6">
-            <h1 className="text-2xl font-bold">Medical Appointment</h1>
-          </div>
-
-          <div className="bg-white bg-opacity-20 rounded-2xl p-2 mb-4 flex justify-around">
-            {['Modern','MC','Uttora'].map(inst => (
-              <label key={inst} className={`flex-1 text-center py-2 rounded-xl cursor-pointer transition-all duration-300 ${institute === inst ? 'bg-white bg-opacity-40 text-gray-800 shadow' : 'text-gray-700'}`}>
-                <input type="radio" name="institute" value={inst} checked={institute===inst} onChange={() => setInstitute(inst)} className="hidden" />
-                <span className="mr-2">🏥</span>{inst}
-              </label>
-            ))}
-          </div>
-
-          <div className="text-gray-800 text-center mb-4 p-2 bg-white bg-opacity-10 rounded-lg">
-            <p className="font-semibold">{institute} Reception: {receptionNumbers[institute]}</p>
-          </div>
-
-          <div className="mb-6 flex justify-center">
-            <img src={instituteImages[institute]} alt="hospital" className="w-full h-auto rounded-lg shadow-md max-w-sm" onError={(e)=>{e.target.onerror=null; e.target.src='https://placehold.co/300x150/cccccc/000000?text=Image+Unavailable'}}/>
-          </div>
-
-          <div className="space-y-4 mb-6">
-            <input type="text" placeholder="Patient Name" value={patientName} onChange={e=>setPatientName(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
-            <input type="number" placeholder="Patient Age" value={patientAge} onChange={e=>setPatientAge(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
-            <input type="tel" placeholder="Phone Number" value={phoneNumber} onChange={e=>setPhoneNumber(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
-
-            <select value={selectedDoctor} onChange={e=>setSelectedDoctor(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20">
-              <option value="" disabled>Select Doctor</option>
-              {instituteDoctors[institute].map(doc => <option key={doc.id} value={doc.id}>{doc.name}</option>)}
-            </select>
-
-            <div>
-              <p className="text-gray-800 text-sm mb-2">Select Serial Numbers</p>
-              <div className="grid grid-cols-5 gap-2">
-                {serialNumbers.map(serial => (
-                  <button key={serial} onClick={() => setSelectedSerial(serial)} className={`p-2 rounded-lg font-semibold ${selectedSerial===serial ? 'bg-white bg-opacity-50' : 'bg-white bg-opacity-20'}`}>{serial}</button>
-                ))}
-              </div>
-            </div>
-
-            <input type="text" placeholder="Attend Time" value={attendTime} onChange={e=>setAttendTime(e.target.value)} className="w-full p-3 rounded-xl bg-white bg-opacity-20"/>
-          </div>
-
-          <button onClick={handleGenerateAppointment} className="w-full py-3 bg-white bg-opacity-40 text-gray-800 font-bold rounded-2xl shadow-lg mb-4" disabled={saving}>
-            {saving ? 'Saving...' : 'Generate Appointment'}
-          </button>
-
-          {generatedOutput && (
-            <div className="mt-4 bg-white bg-opacity-30 p-6 rounded-3xl">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Generated Output</h2>
-
-              {generatedOutput.error ? (
-                <div className="bg-red-200 text-red-800 p-4 rounded-xl">{generatedOutput.error}</div>
-              ) : (
-                <>
-                  <div className="bg-white bg-opacity-20 p-4 rounded-xl text-gray-800 text-sm">
-                    <p>Name: <em>{generatedOutput.name}</em></p>
-                    <p className="mt-4">{generatedOutput.doctor}</p>
-                    <p className="mt-4">SL No: {generatedOutput.serial}</p>
-                    <p>🕝: {generatedOutput.attendTime} (Aprx)</p>
-                    <p>📱: {generatedOutput.phone}</p>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <button onClick={handleCopyOutput} className="py-3 bg-white bg-opacity-40 text-gray-800 font-bold rounded-2xl shadow-lg">Copy Output</button>
-                    <button onClick={() => { setPatientName(''); setPatientAge(''); setPhoneNumber(''); setSelectedDoctor(''); setSelectedSerial(null); setAttendTime(''); setGeneratedOutput(null); }} className="py-3 bg-white bg-opacity-20 text-gray-800 font-bold rounded-2xl shadow-lg">Clear</button>
-                  </div>
-
-                  {generatedOutput.message && <p className="mt-3 text-sm text-green-700">{generatedOutput.message}</p>}
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      );
-    };
-
-    ReactDOM.render(<App />, document.getElementById('root'));
-  </script>
+  <!-- App Logic -->
+  <script type="text/babel" src="app.js"></script>
 </body>
 </html>
