@@ -106,7 +106,7 @@ const INSTITUTES = {
   Demo: {
     label:     'ASMS',
     reception: '01755421318',
-    image:     'mc.png',                   // replace with actual image when available
+    image:     'asms.png',                   // replace with actual image when available
     doctors: [
       { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
       { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
