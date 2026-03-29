@@ -27,7 +27,7 @@ const LOCATION_META = {
 
 const LOCATION_INSTITUTES = {
   MB:     ['Modern', 'MC', 'Uttora'],
-  Sylhet: ['Demo'],
+  Sylhet: ['ASMS'],
 };
 
 // H = Hold, P = Priority — suffix stripped before display on output card
@@ -104,16 +104,14 @@ const INSTITUTES = {
   // ── Sylhet ───────────────────────────────────────────────────
 
   Demo: {
-    label:     'Demo',
-    reception: '01700-000000',
+    label:     'ASMS',
+    reception: '01755421318',
     image:     'mc.png',                   // replace with actual image when available
     doctors: [
-      { name: '👩‍⚕️ সাদিয়া খান',      id: 'sadia_khan'        },
-      { name: '👨‍⚕️ অরূপ রাউৎ',       id: 'arup_raut'         },
-      { name: '👨‍⚕️ সোহান মাহমুদ',     id: 'sohan_mahmud'      },
-      { name: '👨‍⚕️ মনোরঞ্জন সরকার',   id: 'monoranjon_sarkar' },
-      { name: '👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok'        },
-      { name: '👨‍⚕️ শুভ্র তুষার সিংহ', id: 'shuvrot'           },
+      { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
+      { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
+      { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
+     
     ],
   },
 
