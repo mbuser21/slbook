@@ -103,7 +103,7 @@ const INSTITUTES = {
 
   // ── Sylhet ───────────────────────────────────────────────────
 
-  Demo: {
+  ASMS: {
     label:     'ASMS',
     reception: '01755421318',
     image:     'asms.png',                   // replace with actual image when available
