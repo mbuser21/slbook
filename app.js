@@ -126,6 +126,7 @@ const INSTITUTES = {
       { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
       { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
       { name: '👨‍⚕️ এ.কে.এম. সাবের আহমদ',     id: 'akmsaber'      },
+      { name: '👨‍⚕️ আরিফ উদ্দীন আহমেদ',     id: 'arifuddin'      },
      
     ],
   },
