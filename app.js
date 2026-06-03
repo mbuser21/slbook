@@ -75,7 +75,7 @@ const INSTITUTES = {
     image:     'mc.png',
     doctors: [
       { name: '👩‍⚕️ সাদিয়া খান',      id: 'sadia_khan'        },
-      { name: '👨‍⚕️ অরূপ রাউৎ',       id: 'arup_raut'         },
+      { name: '👨‍⚕️ শেখ মোঃ জাকারিয়া',       id: 'jakariya'         },
       { name: '👨‍⚕️ সোহান মাহমুদ',     id: 'sohan_mahmud'      },
       { name: '👨‍⚕️ মনোরঞ্জন সরকার',   id: 'monoranjon_sarkar' },
       { name: '👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok'        },
