@@ -66,7 +66,6 @@ const INSTITUTES = {
       { name: '👨‍⚕️ সালেহ আহমদ তাহলিল',    id: 'tohlil'              },
       { name: '👩‍⚕️ তাসফিয়া আহমেদ শর্মি',  id: 'sormi'               },
       { name: '👨‍⚕️ এম.এ.আউয়াল চৌধুরী',    id: 'awyalchy'              },
-       { name: '👨‍⚕️ মাহমুদুল হাসান',    id: 'mahmudulh'              },
     ],
   },
 
