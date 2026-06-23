@@ -94,7 +94,6 @@ const INSTITUTES = {
       { name: '👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ',    id: 'mmasud'      },
       { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
       { name: '👨‍⚕️ সব্যসাচী পাল তমাল',         id: 'stomal'      },
-      { name: '👨‍⚕️ মোহাম্মদ হুমায়ুন কবীর',     id: 'humayun'     },
       { name: '👨‍⚕️ সাকির আহমদ শাহীন',          id: 'sakirsahin'  },
       { name: '👨‍⚕️ মোঃ ফয়সল আহমেদ',           id: 'mdfoysol'    },
       { name: '👨‍⚕️ সুদীপ্ত ধর শাওন',           id: 'sudiptosawn' },
