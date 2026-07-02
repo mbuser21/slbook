@@ -61,7 +61,6 @@ const INSTITUTES = {
       { name: '👨‍⚕️ সোহেল রানা',            id: 'sohel_rana'          },
       { name: '👨‍⚕️ ইফতেখারুল আলম',         id: 'iftekharul_alam'     },
       { name: '👩‍⚕️ রিদিতা রায় তুলি',      id: 'ridita_roy_tuli'     },
-      { name: '👨‍⚕️ রাজীব দাস',             id: 'rajeeb_das'          },
       { name: '👨‍⚕️ কাওছার আহমদ',           id: 'kawsar'              },
       { name: '👨‍⚕️ সালেহ আহমদ তাহলিল',    id: 'tohlil'              },
       { name: '👩‍⚕️ তাসফিয়া আহমেদ শর্মি',  id: 'sormi'               },
