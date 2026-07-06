@@ -245,6 +245,7 @@ const App = () => {
     if (serial) text += `SL No: ${serial}\n`;
     if (attendTime) text += `🕝: ${attendTime} (Aprx)\n`;
     text += `📱: ${phone}`;
+    if (isModernInstitute) text += `\nRef By: SNJ`;
 
     const el = document.createElement('textarea');
     el.value = text;
@@ -364,6 +365,7 @@ const App = () => {
                 {output.data.serial && <p>SL No: {output.data.serial}</p>}
                 {output.data.attendTime && <p>🕝 {output.data.attendTime} (Aprx)</p>}
                 <p>📱 {output.data.phone}</p>
+                {isModernInstitute && <p>Ref By: S-NJH</p>}
               </div>
               <div className="output-actions">
                 <button onClick={handleCopy}  className="btn-secondary copy">Copy Output</button>
