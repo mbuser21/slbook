@@ -64,7 +64,7 @@ const INSTITUTES = {
       { name: '👨‍⚕️ কাওছার আহমদ',           id: 'kawsar'              },
       { name: '👨‍⚕️ সালেহ আহমদ তাহলিল',    id: 'tohlil'              },
       { name: '👩‍⚕️ তাসফিয়া আহমেদ শর্মি',  id: 'sormi'               },
-      { name: '👨‍⚕️ এম.এ.আউয়াল চৌধুরী',    id: 'awyalchy'              },
+      { name: '👨‍⚕️ এম.এ.আউয়াল চৌধুরী',    id: 'awyalchy'              },
           { name: '👨‍⚕️ মাহমুদুল হাসান',    id: 'mahmudulh'              },
     ],
   },
@@ -75,7 +75,7 @@ const INSTITUTES = {
     image:     'mc.png',
     doctors: [
       { name: '👩‍⚕️ সাদিয়া খান',      id: 'sadia_khan'        },
-      { name: '👨‍⚕️ শেখ মোঃ জাকারিয়া',       id: 'jakariya'         },
+      { name: '👨‍⚕️ শেখ মোঃ জাকারিয়া',       id: 'jakariya'         },
       { name: '👨‍⚕️ সোহান মাহমুদ',     id: 'sohan_mahmud'      },
       { name: '👨‍⚕️ মনোরঞ্জন সরকার',   id: 'monoranjon_sarkar' },
       { name: '👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok'        },
@@ -106,9 +106,9 @@ const INSTITUTES = {
     reception: '01731-555966',
     image:     'gl.png',
     doctors: [
-      { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
+      { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
       { name: '👩‍⚕️ ফাদিলা আহমেদ তিন্নি',   id: 'tinni'  },
-      { name: '👨‍⚕️ নাহিয়ান সাবির',    id: 'nahiyansabir'      },
+      { name: '👨‍⚕️ নাহিয়ান সাবির',    id: 'nahiyansabir'      },
       { name: '👨‍⚕️ এ.কে.এম. সাবের',    id: 'sbermb'      },
   
     ],
@@ -121,8 +121,8 @@ const INSTITUTES = {
     reception: '01755421318',
     image:     'asms.png',                   // replace with actual image when available
     doctors: [
-      { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
-      { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
+      { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
+      { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
       { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
       { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
       { name: '👨‍⚕️ এ.কে.এম. সাবের আহমদ',     id: 'akmsaber'      },
@@ -175,29 +175,56 @@ const App = () => {
     setLocation(loc);
     setInstitute(firstInst);
     setSelectedDoctor('');
+    setSelectedSerial(null);  // Reset serial and time when changing location
+    setAttendTime('');
     setOutput(null);
   };
 
   const handleInstituteChange = (inst) => {
     setInstitute(inst);
     setSelectedDoctor('');
+    setSelectedSerial(null);  // Reset serial and time when changing institute
+    setAttendTime('');
     setOutput(null);
   };
 
   // ── Form handlers ────────────────────────────────────────────
 
   const handleGenerate = async () => {
-    if (!patientName || !patientAge || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
-      setOutput({ error: 'Please fill in all required fields.' });
-      return;
+    const isModern = institute === 'Modern';
+    
+    // Different validation based on institute type
+    if (isModern) {
+      // Modern: only requires name, age, phone, doctor
+      if (!patientName || !patientAge || !phoneNumber || !selectedDoctor) {
+        setOutput({ error: 'Please fill in all required fields.' });
+        return;
+      }
+    } else {
+      // Other institutes: requires all fields including serial and attend time
+      if (!patientName || !patientAge || !phoneNumber || !selectedDoctor || !selectedSerial || !attendTime) {
+        setOutput({ error: 'Please fill in all required fields.' });
+        return;
+      }
     }
 
     const inst       = INSTITUTES[institute];
     const doctorName = inst.doctors.find(d => d.id === selectedDoctor)?.name ?? 'N/A';
 
-    setOutput({
-      data: { name: patientName, doctor: doctorName, serial: cleanSerial(selectedSerial), attendTime, phone: phoneNumber, age: patientAge }
-    });
+    // Build output data - include serial and attendTime only if not Modern
+    const outputData = {
+      name: patientName,
+      doctor: doctorName,
+      phone: phoneNumber,
+      age: patientAge,
+    };
+
+    if (!isModern) {
+      outputData.serial = cleanSerial(selectedSerial);
+      outputData.attendTime = attendTime;
+    }
+
+    setOutput({ data: outputData });
 
     try {
       setSaving(true);
@@ -212,7 +239,13 @@ const App = () => {
   const handleCopy = () => {
     if (!output?.data) return;
     const { name, doctor, serial, attendTime, phone } = output.data;
-    const text = `Name: ${name}\n\n${doctor}\n\nSL No: ${serial}\n🕝: ${attendTime} (Aprx)\n📱: ${phone}`;
+    
+    // Build copy text dynamically based on available fields
+    let text = `Name: ${name}\n\n${doctor}\n`;
+    if (serial) text += `SL No: ${serial}\n`;
+    if (attendTime) text += `🕝: ${attendTime} (Aprx)\n`;
+    text += `📱: ${phone}`;
+
     const el = document.createElement('textarea');
     el.value = text;
     el.style.cssText = 'position:fixed;opacity:0';
@@ -234,6 +267,7 @@ const App = () => {
 
   const currentInst   = INSTITUTES[institute];
   const instKeysInLoc = LOCATION_INSTITUTES[location];
+  const isModernInstitute = institute === 'Modern';
 
   // ── Render ───────────────────────────────────────────────────
 
@@ -289,20 +323,26 @@ const App = () => {
           ))}
         </select>
 
-        <div>
-          <p className="serial-label">Select Serial Number</p>
-          <div className="serial-grid">
-            {SERIAL_NUMBERS.map(serial => (
-              <button key={serial} onClick={() => setSelectedSerial(serial)}
-                className={`serial-btn${selectedSerial === serial ? ' selected' : ''}`}>
-                {serial}
-              </button>
-            ))}
+        {/* Serial Number — HIDDEN when Modern is selected */}
+        {!isModernInstitute && (
+          <div>
+            <p className="serial-label">Select Serial Number</p>
+            <div className="serial-grid">
+              {SERIAL_NUMBERS.map(serial => (
+                <button key={serial} onClick={() => setSelectedSerial(serial)}
+                  className={`serial-btn${selectedSerial === serial ? ' selected' : ''}`}>
+                  {serial}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        <input type="text" placeholder="Attend Time (e.g. 10:30 AM)" value={attendTime}
-          onChange={e => setAttendTime(e.target.value)} className="field" />
+        {/* Attend Time — HIDDEN when Modern is selected */}
+        {!isModernInstitute && (
+          <input type="text" placeholder="Attend Time (e.g. 10:30 AM)" value={attendTime}
+            onChange={e => setAttendTime(e.target.value)} className="field" />
+        )}
       </div>
 
       {/* Generate */}
@@ -321,8 +361,8 @@ const App = () => {
               <div className="output-body">
                 <p>Name: <em>{output.data.name}</em></p>
                 <p>{output.data.doctor}</p>
-                <p>SL No: {output.data.serial}</p>
-                <p>🕝 {output.data.attendTime} (Aprx)</p>
+                {output.data.serial && <p>SL No: {output.data.serial}</p>}
+                {output.data.attendTime && <p>🕝 {output.data.attendTime} (Aprx)</p>}
                 <p>📱 {output.data.phone}</p>
               </div>
               <div className="output-actions">
