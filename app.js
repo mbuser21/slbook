@@ -98,6 +98,9 @@ const INSTITUTES = {
       { name: '👨‍⚕️ সুদীপ্ত ধর শাওন',           id: 'sudiptosawn' },
       { name: '👨‍⚕️ রিয়াজুল জান্নাত মাসুম',     id: 'rjmasum'     },
        { name: '👩‍⚕️ নুরুন্নাহার আন্নি',      id: 'nurunnahar'        },
+            { name: '👨‍⚕️ ডাঃ অমৃত লাল দাস',     id: 'amritolal'     },
+
+      
     ],
   },
 
