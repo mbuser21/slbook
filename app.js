@@ -88,7 +88,7 @@ const INSTITUTES = {
     reception: '01300-321343',
     image:     'ut.png',
     doctors: [
-      { name: '👨‍⚕️ এ.কে. জিলুল হক',           id: 'jillu'       },
+      
       { name: '👨‍⚕️ মোঃ আরিফুজ্জামান (পলাশ)',   id: 'arifpolash'  },
       { name: '👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ',    id: 'mmasud'      },
       { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
