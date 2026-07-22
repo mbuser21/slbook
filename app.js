@@ -106,7 +106,7 @@ const INSTITUTES = {
     ],
   },
 
-  GL: {
+  CD: {
     label:     'CD',
     reception: '01334911120',
     image:     'gl.png',
