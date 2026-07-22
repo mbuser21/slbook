@@ -26,7 +26,7 @@ const LOCATION_META = {
 };
 
 const LOCATION_INSTITUTES = {
-  MB:     ['Modern', 'MC', 'Uttora', 'GL'],
+  MB:     ['Modern', 'MC', 'Uttora', 'CD'],
   Sylhet: ['ASMS'],
 };
 
@@ -100,14 +100,15 @@ const INSTITUTES = {
        { name: '👩‍⚕️ নুরুন্নাহার আন্নি',      id: 'nurunnahar'        },
             { name: '👨‍⚕️ ডাঃ অমৃত লাল দাস',     id: 'amritolal'     },
       { name: '👨‍⚕️ সনি কুমার সাহা',     id: 'sonykumar'     },
+      { name: '👨‍⚕️ মুরশিদুল ইসলাম মোরশেদ',     id: 'morshed'     },
 
       
     ],
   },
 
   GL: {
-    label:     'GL',
-    reception: '01731-555966',
+    label:     'CD',
+    reception: '01334911120',
     image:     'gl.png',
     doctors: [
       { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
