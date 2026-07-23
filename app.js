@@ -109,7 +109,7 @@ const INSTITUTES = {
   CD: {
     label:     'CD',
     reception: '01334911120',
-    image:     'gl.png',
+    image:     'cd.png',
     doctors: [
       { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
       { name: '👩‍⚕️ ফাদিলা আহমেদ তিন্নি',   id: 'tinni'  },
