@@ -111,10 +111,11 @@ const INSTITUTES = {
     reception: '01334911120',
     image:     'cd.png',
     doctors: [
-      { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
-      { name: '👩‍⚕️ ফাদিলা আহমেদ তিন্নি',   id: 'tinni'  },
-      { name: '👨‍⚕️ নাহিয়ান সাবির',    id: 'nahiyansabir'      },
-      { name: '👨‍⚕️ এ.কে.এম. সাবের',    id: 'sbermb'      },
+      { name: '👨‍⚕️ ডাঃ আকবর নিয়াজ মাহমুদ',           id: 'akborniyaz'       },
+       { name: '👨‍⚕️ ডাঃ বিদ্রুম পুরকায়স্থ',           id: 'bidrum'       },
+      { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
+       { name: '👩‍⚕️ ডাঃ রেহানা আক্তার ঝুমা',   id: 'juma'  },
+     
   
     ],
   },
