@@ -26,7 +26,7 @@ const LOCATION_META = {
 };
 
 const LOCATION_INSTITUTES = {
-  MB:     ['Modern', 'MC', 'Uttora', 'CD'],
+  MB:     ['Modern', 'MC', 'Uttora', 'GL'],
   Sylhet: ['ASMS'],
 };
 
@@ -88,7 +88,7 @@ const INSTITUTES = {
     reception: '01300-321343',
     image:     'ut.png',
     doctors: [
-      
+      { name: '👨‍⚕️ এ.কে. জিলুল হক',           id: 'jillu'       },
       { name: '👨‍⚕️ মোঃ আরিফুজ্জামান (পলাশ)',   id: 'arifpolash'  },
       { name: '👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ',    id: 'mmasud'      },
       { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
@@ -98,24 +98,18 @@ const INSTITUTES = {
       { name: '👨‍⚕️ সুদীপ্ত ধর শাওন',           id: 'sudiptosawn' },
       { name: '👨‍⚕️ রিয়াজুল জান্নাত মাসুম',     id: 'rjmasum'     },
        { name: '👩‍⚕️ নুরুন্নাহার আন্নি',      id: 'nurunnahar'        },
-            { name: '👨‍⚕️ ডাঃ অমৃত লাল দাস',     id: 'amritolal'     },
-      { name: '👨‍⚕️ সনি কুমার সাহা',     id: 'sonykumar'     },
-      { name: '👨‍⚕️ মুরশিদুল ইসলাম মোরশেদ',     id: 'morshed'     },
-
-      
     ],
   },
 
-  CD: {
-    label:     'CD',
-    reception: '01334911120',
-    image:     'cd.png',
+  GL: {
+    label:     'GL',
+    reception: '01731-555966',
+    image:     'gl.png',
     doctors: [
-      { name: '👨‍⚕️ ডাঃ আকবর নিয়াজ মাহমুদ',           id: 'akborniyaz'       },
-       { name: '👨‍⚕️ ডাঃ বিদ্রুম পুরকায়স্থ',           id: 'bidrum'       },
-      { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
-       { name: '👩‍⚕️ ডাঃ রেহানা আক্তার ঝুমা',   id: 'juma'  },
-     
+      { name: '👨‍⚕️ ছাদেকুল আলম পিয়াস',           id: 'piyas'       },
+      { name: '👩‍⚕️ ফাদিলা আহমেদ তিন্নি',   id: 'tinni'  },
+      { name: '👨‍⚕️ নাহিয়ান সাবির',    id: 'nahiyansabir'      },
+      { name: '👨‍⚕️ এ.কে.এম. সাবের',    id: 'sbermb'      },
   
     ],
   },
@@ -168,6 +162,7 @@ const App = () => {
   const [selectedDoctor, setSelectedDoctor] = React.useState('');
   const [selectedSerial, setSelectedSerial] = React.useState(null);
   const [attendTime,     setAttendTime]     = React.useState('');
+  const [selectedShift,  setSelectedShift]  = React.useState('');
 
   // UI feedback
   const [output,  setOutput]  = React.useState(null);   // { data } | { error }
@@ -183,6 +178,7 @@ const App = () => {
     setSelectedDoctor('');
     setSelectedSerial(null);  // Reset serial and time when changing location
     setAttendTime('');
+    setSelectedShift('');
     setOutput(null);
   };
 
@@ -191,6 +187,7 @@ const App = () => {
     setSelectedDoctor('');
     setSelectedSerial(null);  // Reset serial and time when changing institute
     setAttendTime('');
+    setSelectedShift('');
     setOutput(null);
   };
 
@@ -228,6 +225,8 @@ const App = () => {
     if (!isModern) {
       outputData.serial = cleanSerial(selectedSerial);
       outputData.attendTime = attendTime;
+    } else if (isModern && selectedShift) {
+      outputData.shift = selectedShift;
     }
 
     setOutput({ data: outputData });
@@ -244,7 +243,7 @@ const App = () => {
 
   const handleCopy = () => {
     if (!output?.data) return;
-    const { name, doctor, serial, attendTime, phone } = output.data;
+    const { name, doctor, serial, attendTime, phone, shift } = output.data;
     
     // Build copy text dynamically based on available fields
     let text = `Name: ${name}\n\n${doctor}\n`;
@@ -252,6 +251,7 @@ const App = () => {
     if (attendTime) text += `🕝: ${attendTime} (Aprx)\n`;
     text += `📱: ${phone}`;
     if (isModernInstitute) text += `\nRef By: SNJ`;
+    if (shift) text += `\n${shift}`;
 
     const el = document.createElement('textarea');
     el.value = text;
@@ -267,6 +267,7 @@ const App = () => {
   const handleClear = () => {
     setPatientName(''); setPatientAge(''); setPhoneNumber('');
     setSelectedDoctor(''); setSelectedSerial(null); setAttendTime('');
+    setSelectedShift('');
     setOutput(null); setCopyMsg('');
   };
 
@@ -330,6 +331,23 @@ const App = () => {
           ))}
         </select>
 
+        {/* Shift Selection — ONLY for Modern institute (optional) */}
+        {isModernInstitute && (
+          <div>
+            <p className="serial-label">Select Shift (Optional)</p>
+            <div className="serial-grid">
+              <button onClick={() => setSelectedShift('সকাল')}
+                className={`serial-btn${selectedShift === 'সকাল' ? ' selected' : ''}`}>
+                সকাল
+              </button>
+              <button onClick={() => setSelectedShift('বিকাল')}
+                className={`serial-btn${selectedShift === 'বিকাল' ? ' selected' : ''}`}>
+                বিকাল
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Serial Number — HIDDEN when Modern is selected */}
         {!isModernInstitute && (
           <div>
@@ -371,7 +389,8 @@ const App = () => {
                 {output.data.serial && <p>SL No: {output.data.serial}</p>}
                 {output.data.attendTime && <p>🕝 {output.data.attendTime} (Aprx)</p>}
                 <p>📱 {output.data.phone}</p>
-                {isModernInstitute && <p>Ref By: S-NJH</p>}
+                {isModernInstitute && <p>Ref By: SNJ</p>}
+                {output.data.shift && <p>{output.data.shift}</p>}
               </div>
               <div className="output-actions">
                 <button onClick={handleCopy}  className="btn-secondary copy">Copy Output</button>
