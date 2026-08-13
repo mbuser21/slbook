@@ -31,7 +31,7 @@ const LOCATION_INSTITUTES = {
 };
 
 // H = Hold, P = Priority — suffix stripped before display on output card
-const SERIAL_NUMBERS = [3, 4, 5, 6, 7, 8, '15 H', '16 H', '25 P', '26 P'];
+const SERIAL_NUMBERS = [3, 4, 5, 6, 7, 8, '11', '12', '13'];
 
 // Google Apps Script endpoint for sheet logging
 const SHEET_ENDPOINT =
