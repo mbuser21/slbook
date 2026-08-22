@@ -89,16 +89,14 @@ const INSTITUTES = {
     reception: '01300-321343',
     image:     'ut.png',
     doctors: [
-      { name: '👨‍⚕️ এ.কে. জিলুল হক',           id: 'jillu'       },
-      { name: '👨‍⚕️ মোঃ আরিফুজ্জামান (পলাশ)',   id: 'arifpolash'  },
-      { name: '👨‍⚕️ আব্দুল মোকাদ্দেম মাসুদ',    id: 'mmasud'      },
+   
       { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
-      { name: '👨‍⚕️ সব্যসাচী পাল তমাল',         id: 'stomal'      },
       { name: '👨‍⚕️ সাকির আহমদ শাহীন',          id: 'sakirsahin'  },
       { name: '👨‍⚕️ মোঃ ফয়সল আহমেদ',           id: 'mdfoysol'    },
       { name: '👨‍⚕️ সুদীপ্ত ধর শাওন',           id: 'sudiptosawn' },
       { name: '👨‍⚕️ রিয়াজুল জান্নাত মাসুম',     id: 'rjmasum'     },
-       { name: '👩‍⚕️ নুরুন্নাহার আন্নি',      id: 'nurunnahar'        },
+      { name: '👨‍⚕️ মুরশিদুল ইসলাম (মোরশেদ)',     id: 'mrmurshid'     },
+      { name: '👨‍⚕️ সনি কুমার সাহা',     id: 'sonykumar'     },
     ],
   },
 
