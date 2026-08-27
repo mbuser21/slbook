@@ -64,7 +64,6 @@ const INSTITUTES = {
       { name: '👨‍⚕️ কাওছার আহমদ',           id: 'kawsar'              },
       { name: '👨‍⚕️ সালেহ আহমদ তাহলিল',    id: 'tohlil'              },
       { name: '👩‍⚕️ তাসফিয়া আহমেদ শর্মি',  id: 'sormi'               },
-      { name: '👨‍⚕️ এম.এ.আউয়াল চৌধুরী',    id: 'awyalchy'              },
           { name: '👨‍⚕️ মাহমুদুল হাসান',    id: 'mahmudulh'              },
     ],
   },
@@ -117,10 +116,18 @@ const INSTITUTES = {
   // Placeholder entry — fill in reception, image, and doctors when available.
   Insania: {
     label:     'Insania',
-    reception: 'TBD',
+    reception: '01344404441',
     image:     'insania.png',
     doctors: [
-      // { name: '👨‍⚕️ ডাক্তারের নাম', id: 'doctor_id' },
+       { name: '👨‍⚕️ ডাঃ রাসমিনা আক্তার পলি', id: 'rasmina_poly' },
+       { name: '👨‍⚕️ ডা. সৈয়দা শাহিনা সুলতানা', id: 'sahina_sultana' },
+        { name: '👨‍⚕️ ডাঃ ওয়াসী দীন আহমেদ', id: 'wasidin'},
+      { name: '👨‍⚕️ ডাঃ শাহ আশিকুর রহমান আশিক চৌধুরী', id: 'ashiqchy'},
+      { name: '👨‍⚕️ ডাঃ মোঃ আরাফাত রহমান', id: 'arafatrahman'},
+      { name: '👨‍⚕️ ডাঃ আসীফ দীন আহমেদ', id: 'asifdin'},
+      { name: '👨‍⚕️ ডাঃ মুহাম্মদ আবু মহসীন', id: 'abumohsin'},
+      { name: '👨‍⚕️ ডাঃ এম. এ. আহাদ', id: 'maahad'},
+      { name: '👨‍⚕️ ডাঃ মোঃ সাইফুর রহমান', id: 'mdsaifur'},
     ],
   },
 
