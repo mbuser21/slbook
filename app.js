@@ -26,7 +26,7 @@ const LOCATION_META = {
 };
 
 const LOCATION_INSTITUTES = {
-  MB:     ['Modern', 'MC', 'Uttora', 'CD'],
+  MB:     ['Modern', 'MC', 'Uttora', 'CD', 'Insania'],
   Sylhet: ['ASMS'],
 };
 
@@ -107,10 +107,20 @@ const INSTITUTES = {
     doctors: [
       { name: '👨‍⚕️ ডাঃ আকবর নিয়াজ মাহমুদ',           id: 'akborniyaz'       },
        { name: '👨‍⚕️ ডাঃ বিদ্রুম পুরকায়স্থ',           id: 'bidrum'       },
-      { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
+      { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
        { name: '👩‍⚕️ ডাঃ রেহানা আক্তার ঝুমা',   id: 'juma'  },
-       { name: '👨‍⚕️ চৌধুরী মোতাওয়াক্কিল বিল্লাহ', id: 'mbillah'},
+       { name: '👨‍⚕️ চৌধুরী মোতাওয়াক্কিল বিল্লাহ', id: 'mbillah'},
   
+    ],
+  },
+
+  // Placeholder entry — fill in reception, image, and doctors when available.
+  Insania: {
+    label:     'Insania',
+    reception: 'TBD',
+    image:     'insania.png',
+    doctors: [
+      // { name: '👨‍⚕️ ডাক্তারের নাম', id: 'doctor_id' },
     ],
   },
 
