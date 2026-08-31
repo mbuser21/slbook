@@ -152,7 +152,7 @@ const INSTITUTES = {
   ABC: {
     label:     'ABC',
     reception: '01755421318',
-    image:     'asms.png',                   // replace with actual image when available
+    image:     'abc.png',                   // replace with actual image when available
     doctors: [
       { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
       { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
