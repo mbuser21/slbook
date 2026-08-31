@@ -151,15 +151,14 @@ const INSTITUTES = {
 
   ABC: {
     label:     'ABC',
-    reception: '01755421318',
+    reception: '01334959811',
     image:     'abc.png',                   // replace with actual image when available
     doctors: [
-      { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
-      { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
-      { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
-      { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
-      { name: '👨‍⚕️ এ.কে.এম. সাবের আহমদ',     id: 'akmsaber'      },
-      { name: '👨‍⚕️ আরিফ উদ্দীন আহমেদ',     id: 'arifuddin'      },
+      { name: '👩‍⚕️ পিয়া বিশ্বাস',      id: 'piyabiswas'        },
+      { name: '👩‍⚕️ সায়েরা বেগম চৌধুরী',      id: 'sayerabegom'        },
+      { name: '👨‍⚕️ সুবীর কুমার দাশ',       id: 'subirkumar'         },
+      { name: '👨‍⚕️ এস. উত্তম কুমার',     id: 'suttomkumar'      },
+      { name: '👩‍⚕️ প্রতিমা বালা দেবী',     id: 'protimabala'      },
      
     ],
   },
