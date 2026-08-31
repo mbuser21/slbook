@@ -27,7 +27,7 @@ const LOCATION_META = {
 
 const LOCATION_INSTITUTES = {
   MB:     ['Modern', 'MC', 'Uttora', 'CD', 'Insania'],
-  Sylhet: ['ASMS'],
+  Sylhet: ['ASMS', 'ABC'],
 };
 
 // H = Hold, P = Priority — suffix stripped before display on output card
@@ -136,6 +136,21 @@ const INSTITUTES = {
 
   ASMS: {
     label:     'ASMS',
+    reception: '01755421318',
+    image:     'asms.png',                   // replace with actual image when available
+    doctors: [
+      { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
+      { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
+      { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
+      { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
+      { name: '👨‍⚕️ এ.কে.এম. সাবের আহমদ',     id: 'akmsaber'      },
+      { name: '👨‍⚕️ আরিফ উদ্দীন আহমেদ',     id: 'arifuddin'      },
+     
+    ],
+  },
+
+  ABC: {
+    label:     'ABC',
     reception: '01755421318',
     image:     'asms.png',                   // replace with actual image when available
     doctors: [
