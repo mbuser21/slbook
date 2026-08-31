@@ -89,7 +89,7 @@ const INSTITUTES = {
     image:     'ut.png',
     doctors: [
    
-      { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
+     
       { name: '👨‍⚕️ সাকির আহমদ শাহীন',          id: 'sakirsahin'  },
       { name: '👨‍⚕️ মোঃ ফয়সল আহমেদ',           id: 'mdfoysol'    },
       { name: '👨‍⚕️ সুদীপ্ত ধর শাওন',           id: 'sudiptosawn' },
@@ -104,6 +104,7 @@ const INSTITUTES = {
     reception: '01334911120',
     image:     'cd.png',
     doctors: [
+       { name: '👨‍⚕️ সাহেদ আহমেদ সুমন',          id: 'sam'         },
       { name: '👨‍⚕️ ডাঃ আকবর নিয়াজ মাহমুদ',           id: 'akborniyaz'       },
        { name: '👨‍⚕️ ডাঃ বিদ্রুম পুরকায়স্থ',           id: 'bidrum'       },
       { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
