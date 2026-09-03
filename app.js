@@ -53,7 +53,6 @@ const INSTITUTES = {
       { name: '👨‍⚕️ পদ্ম মোহন সিনহা',      id: 'padma_mohan_sinha'   },
       { name: '👨‍⚕️ রফিকুল ইসলাম হাজারী',  id: 'rafiqul_islam_hazari'},
       { name: '👨‍⚕️ মাহফুজ আহমেদ',          id: 'mahfuz_ahmed'        },
-      { name: '👩‍⚕️ পার্লী দাশ',            id: 'parlee_dash'         },
       { name: '👩‍⚕️ মৌমিতা জামান খান',      id: 'moumita_jaman_khan'  },
       { name: '👨‍⚕️ এখলাছ ভুঁইয়া',          id: 'ekhlas_bhuiyan'      },
       { name: '👨‍⚕️ শাহ দিদার ইমাম',        id: 'shah_didar_imam'     },
@@ -64,7 +63,8 @@ const INSTITUTES = {
       { name: '👨‍⚕️ কাওছার আহমদ',           id: 'kawsar'              },
       { name: '👨‍⚕️ সালেহ আহমদ তাহলিল',    id: 'tohlil'              },
       { name: '👩‍⚕️ তাসফিয়া আহমেদ শর্মি',  id: 'sormi'               },
-          { name: '👨‍⚕️ মাহমুদুল হাসান',    id: 'mahmudulh'              },
+          { name: '👨‍⚕️ মোঃ রাশেদ মঞ্জুর',    id: 'rasehdm'              },
+      { name: '👨‍⚕️ অধ্যাপক ডাঃ এ বি সিদ্দিক',    id: 'absiddique'              },
     ],
   },
 
