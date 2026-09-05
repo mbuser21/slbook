@@ -129,6 +129,7 @@ const INSTITUTES = {
       { name: '👨‍⚕️ ডাঃ মুহাম্মদ আবু মহসীন', id: 'abumohsin'},
       { name: '👨‍⚕️ ডাঃ এম. এ. আহাদ', id: 'maahad'},
       { name: '👨‍⚕️ ডাঃ মোঃ সাইফুর রহমান', id: 'mdsaifur'},
+      { name: '👨‍⚕️ ডাঃ সালসাবিল সুলতানা', id: 'salsabil' },
     ],
   },
 
