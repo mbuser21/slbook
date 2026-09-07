@@ -121,8 +121,8 @@ const INSTITUTES = {
     image:     'insania.png',
     doctors: [
        { name: '👨‍⚕️ ডাঃ রাসমিনা আক্তার পলি', id: 'rasmina_poly' },
-       { name: '👨‍⚕️ ডা. সৈয়দা শাহিনা সুলতানা', id: 'sahina_sultana' },
-        { name: '👨‍⚕️ ডাঃ ওয়াসী দীন আহমেদ', id: 'wasidin'},
+       { name: '👨‍⚕️ ডা. সৈয়দা শাহিনা সুলতানা', id: 'sahina_sultana' },
+        { name: '👨‍⚕️ ডাঃ ওয়াসী দীন আহমেদ', id: 'wasidin'},
       { name: '👨‍⚕️ ডাঃ শাহ আশিকুর রহমান আশিক চৌধুরী', id: 'ashiqchy'},
       { name: '👨‍⚕️ ডাঃ মোঃ আরাফাত রহমান', id: 'arafatrahman'},
       { name: '👨‍⚕️ ডাঃ আসীফ দীন আহমেদ', id: 'asifdin'},
@@ -155,8 +155,8 @@ const INSTITUTES = {
     reception: '01334959811',
     image:     'abc.png',                   // replace with actual image when available
     doctors: [
-      { name: '👩‍⚕️ পিয়া বিশ্বাস',      id: 'piyabiswas'        },
-      { name: '👩‍⚕️ সায়েরা বেগম চৌধুরী',      id: 'sayerabegom'        },
+      { name: '👩‍⚕️ পিয়া বিশ্বাস',      id: 'piyabiswas'        },
+      { name: '👩‍⚕️ সায়েরা বেগম চৌধুরী',      id: 'sayerabegom'        },
       { name: '👨‍⚕️ সুবীর কুমার দাশ',       id: 'subirkumar'         },
       { name: '👨‍⚕️ এস. উত্তম কুমার',     id: 'suttomkumar'      },
       { name: '👩‍⚕️ প্রতিমা বালা দেবী',     id: 'protimabala'      },
@@ -276,10 +276,11 @@ const App = () => {
 
   const handleCopy = () => {
     if (!output?.data) return;
-    const { name, doctor, serial, attendTime, phone, shift } = output.data;
+    const { name, doctor, serial, attendTime, phone, shift, age } = output.data;
     
     // Build copy text dynamically based on available fields
     let text = `Name: ${name}\n\n${doctor}\n`;
+    if (isABCInstitute) text += `Age: ${age}\n`;
     if (serial) text += `SL No: ${serial}\n`;
     if (attendTime) text += `🕝: ${attendTime} (Aprx)\n`;
     text += `📱: ${phone}`;
@@ -309,6 +310,7 @@ const App = () => {
   const currentInst   = INSTITUTES[institute];
   const instKeysInLoc = LOCATION_INSTITUTES[location];
   const isModernInstitute = institute === 'Modern';
+  const isABCInstitute    = institute === 'ABC';
 
   // ── Render ───────────────────────────────────────────────────
 
@@ -419,6 +421,7 @@ const App = () => {
               <div className="output-body">
                 <p>Name: <em>{output.data.name}</em></p>
                 <p>{output.data.doctor}</p>
+                {isABCInstitute && <p>Age: {output.data.age}</p>}
                 {output.data.serial && <p>SL No: {output.data.serial}</p>}
                 {output.data.attendTime && <p>🕝 {output.data.attendTime} (Aprx)</p>}
                 <p>📱 {output.data.phone}</p>
