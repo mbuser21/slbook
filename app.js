@@ -160,6 +160,8 @@ const INSTITUTES = {
       { name: '👨‍⚕️ সুবীর কুমার দাশ',       id: 'subirkumar'         },
       { name: '👨‍⚕️ এস. উত্তম কুমার',     id: 'suttomkumar'      },
       { name: '👩‍⚕️ প্রতিমা বালা দেবী',     id: 'protimabala'      },
+      { name: '👨‍⚕️ সহকারী অধ্যাপক নাজমুল ইসলাম',       id: 'nazmulent'         },
+      { name: '👨‍⚕️ ডাঃ মোহাম্মদ ফরিদুল হক',       id: 'foridulsarjon'         },
      
     ],
   },
