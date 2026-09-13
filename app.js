@@ -96,6 +96,9 @@ const INSTITUTES = {
       { name: '👨‍⚕️ রিয়াজুল জান্নাত মাসুম',     id: 'rjmasum'     },
       { name: '👨‍⚕️ মুরশিদুল ইসলাম (মোরশেদ)',     id: 'mrmurshid'     },
       { name: '👨‍⚕️ সনি কুমার সাহা',     id: 'sonykumar'     },
+      { name: '👨‍⚕️ ডা. রাজবীর আহমদ',     id: 'rajbir'     },
+      { name: '👨‍⚕️ ডাঃ সুব্রত কুমার রায়',     id: 'subrotokumarray'     },
+      { name: '👩‍⚕️ রেজওয়ানা আফরিন রূপা',     id: 'rejwanarupa'     },
     ],
   },
 
