@@ -114,6 +114,9 @@ const INSTITUTES = {
       { name: '👩‍⚕️ ডাঃ রোকশানা ওয়াহিদ রাহি',   id: 'rrahi'  },
        { name: '👩‍⚕️ ডাঃ রেহানা আক্তার ঝুমা',   id: 'juma'  },
        { name: '👨‍⚕️ চৌধুরী মোতাওয়াক্কিল বিল্লাহ', id: 'mbillah'},
+       { name: '👨‍⚕️ হাবিবুর রহমান', id: 'habiburrahman'},
+      { name: '👨‍⚕️ মৃনাল কান্তি সিনহা', id: 'mrinalkanti'},
+  
   
     ],
   },
