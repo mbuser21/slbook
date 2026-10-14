@@ -169,8 +169,8 @@ const INSTITUTES = {
       { name: '👩‍⚕️ প্রতিমা বালা দেবী',     id: 'protimabala'      },
       { name: '👨‍⚕️ সহকারী অধ্যাপক নাজমুল ইসলাম',       id: 'nazmulent'         },
       { name: '👨‍⚕️ ডাঃ মোহাম্মদ ফরিদুল হক',       id: 'foridulsarjon'         },
-       { name: '👨‍⚕️ ডাঃ মোঃ সাকিবুল ইসলাম',       id: 'sakibul'         },
       { name: '👩‍⚕️ ডাঃ নাসুহা ফারুক চৌধুরী',      id: 'nasuhafaruk'        },
+      { name: '👨‍⚕️ ডাঃ মোঃ মকবুল হোসেন',     id: 'mokbulhosen'      },
      
     ],
   },
