@@ -148,11 +148,15 @@ const INSTITUTES = {
     image:     'asms.png',                   // replace with actual image when available
     doctors: [
       { name: '👩‍⚕️ রীতা রায়',      id: 'rita_ray'        },
-      { name: '👩‍⚕️ জাফরিন ইয়াসমিন চৌধুরী',      id: 'jafrinchy'        },
       { name: '👨‍⚕️ মোঃ খালেদুর রহমান চৌধুরী',       id: 'khaled_chy'         },
       { name: '👨‍⚕️ আব্দুল্লাহ জাকি বিন হোসেন',     id: 'jakibinhosen'      },
       { name: '👨‍⚕️ এ.কে.এম. সাবের আহমদ',     id: 'akmsaber'      },
       { name: '👨‍⚕️ আরিফ উদ্দীন আহমেদ',     id: 'arifuddin'      },
+       { name: '👨‍⚕️ মেজর ডাঃ মোঃ সামিউশ শাহেদ',     id: 'samiushsahed'      },
+      { name: '👩‍⚕️ ডা. পম্পি বৈদ্য',      id: 'pompi'},
+       { name: '👨‍⚕️ ডাঃ মোঃ সালেহ মাহমুদ (আসাদ)',     id: 'saleahasad'      },
+      
+      
      
     ],
   },
