@@ -81,6 +81,7 @@ const INSTITUTES = {
       { name: '👨‍⚕️ এ. কে. ফজলুল হক', id: 'fozlul_hok'        },
       { name: '👨‍⚕️ শুভ্র তুষার সিংহ', id: 'shuvrot'           },
        { name: '👨‍⚕️ রাজু চন্দ', id: 'rajuch'}, 
+       { name: '👨‍⚕️ ডাঃ মোঃ নাছিম',     id: 'drnasim'      },
     ],
   },
 
